@@ -23,6 +23,32 @@ import java.util.ArrayList;
  ***********************/
 public final class PokerHand {
 	public static boolean IsStraight(ArrayList<Integer> cards) {
-		return false;
+		int[] cards2 = new int[14];
+		for(int i = 0; i<cards.size(); i++) {
+			cards2[cards.get(i)-2]++;
+		}
+		
+		int num = 0;
+		boolean b = false;
+		boolean rerun = true;
+		for(int i = 0; i<14; i++) {
+			if(i>12&&rerun) {
+				i=0;
+				rerun = false;
+				System.out.println("rerun");
+			}
+			if(cards2[i]>0) {
+				System.out.println(i+2);
+				num++;
+			}
+			else {
+				num = 0;
+			}
+			if(num>=5) {
+				b = true;
+				break;
+			}
+		}
+		return b;
 	}
 }
